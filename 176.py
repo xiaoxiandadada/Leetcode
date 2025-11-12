@@ -2,11 +2,11 @@
 import pandas as pd
 
 def combine_two_tables(person: pd.DataFrame, address: pd.DataFrame) -> pd.DataFrame:
-    merged = person.merge(address[['personId', 'city', 'state']], on='personId',how='left')
-
-    result = merged[['firstName', 'lastName', 'city', 'state']]
-
-    return result
+    #插入数据
+    result_frame = pd.merge(person,address,on = 'personId',how = 'left')
+    #选择输出的列
+    result_frame = result_frame[['firstName','lastName','city','state']]
+    return result_frame
 
 # Example usage:
 person = pd.DataFrame({

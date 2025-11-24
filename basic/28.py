@@ -1,3 +1,4 @@
+# 找出字符串中第一个匹配项的下标
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
         # if len(needle) == 0:

@@ -7,6 +7,8 @@ class Solution:
         for ch in t:
             x ^= ord(ch)
         return chr(x)
+ 
+    # return chr(sum(map(ord, t)) - sum(map(ord, s)))
 
 s = "abcd"
 t = "abcde"

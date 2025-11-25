@@ -1,3 +1,4 @@
+# 最小整数可被K整除
 class Solution:
     def smallestRepunitDivByK(self, k: int) -> int:
         if k % 2 == 0 or k % 5 == 0:

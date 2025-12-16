@@ -8,20 +8,41 @@ class TreeNode:
         self.right = right
 
 
+# class Solution:
+#     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+#         res = []
+
+#         def dfs(node):
+#             if not node:
+#                 return
+#             dfs(node.left)
+#             res.append(node.val)
+#             dfs(node.right)
+
+#         dfs(root)
+#         return res
+
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         res = []
-
-        def dfs(node):
-            if not node:
-                return
-            dfs(node.left)
+        stack = []
+        current = root
+        
+        # 当 current 指针不为空，或者栈里还有节点时，继续循环
+        while current or stack:
+            # 1. 一直向左走，把沿途节点压入栈中
+            while current:
+                stack.append(current)
+                current = current.left
+            
+            # 2. 左边走到头了，弹出栈顶节点（这就是“中”的位置）
+            node = stack.pop()
             res.append(node.val)
-            dfs(node.right)
-
-        dfs(root)
+            
+            # 3. 转向右子树
+            current = node.right
+            
         return res
-
 
 def build_tree(level_order: List[Optional[int]]) -> Optional[TreeNode]:
     if not level_order:
